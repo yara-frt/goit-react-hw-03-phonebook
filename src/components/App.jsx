@@ -12,6 +12,21 @@ class App extends Component {
     filter: '',
   }
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts })
+    }
+  }
+
+   componentDidUpdate(prevProps, prevState) {
+     if (this.state.contacts !== prevState.contacts) {
+       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+    }
+
   addContact = data => {
     const { name, number } = data;
 
@@ -20,6 +35,9 @@ class App extends Component {
       name: name,
       number: number,
     }
+
+   
+
 
     if (!this.state.contacts.find(contact => contact.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
       this.setState(prevState => ({
@@ -39,22 +57,20 @@ class App extends Component {
   changeFilter = e => {
     this.setState({filter: e.currentTarget.value})
   }
+
+  
   
   render() {
     const { contacts, filter } = this.state;
 
   
-    const lowerFilter = filter.toLocaleLowerCase()
+    const lowerFilter = filter.toLocaleLowerCase().trim()
     const visibleContacts = contacts.filter(contact => contact.name.toLocaleLowerCase().includes(lowerFilter))
 
     return(
         <div
           style={{
             height: '100vh',
-            // display: 'flex',
-            // justifyContent: 'center',
-            // alignItems: 'center',
-            // fontSize: 40,
             color: '#010101'
           }}
       >
