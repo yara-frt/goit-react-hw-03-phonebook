@@ -1,0 +1,39 @@
+.boxForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.label {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+    color: #6c17ea;
+    
+}
+
+.input {
+    display: block;
+    margin-top: 10px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #6c17ea;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    background-color: #eac117;
+    border: 2px solid #6c17ea;
+    color: #6c17ea;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #6c17ea;
+    color: #eac117;
+    border: 2px solid #eac117;
+}
